@@ -1,0 +1,18 @@
+{
+  "name": "cookshare-edge-functions",
+  "version": "1.0.0",
+  "description": "Edge Functions for CookShare",
+  "main": "api/[[path]].js",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler publish",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["esa-pages", "edge-computing", "aliyun"],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230724.0",
+    "wrangler": "^3.8.0"
+  }
+}
