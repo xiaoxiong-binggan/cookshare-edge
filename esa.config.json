@@ -1,0 +1,70 @@
+{
+  "build": {
+    "command": "npm run build",
+    "output": "dist",
+    "environment": {
+      "VITE_APP_VERSION": "1.0.0"
+    }
+  },
+  "routes": [
+    {
+      "src": "/api/.*",
+      "dest": "/edge-functions/api/[[path]].js",
+      "headers": {
+        "Cache-Control": "public, max-age=300",
+        "Access-Control-Allow-Origin": "*",
+        "X-Edge-Runtime": "ESA-Pages"
+      }
+    },
+    {
+      "src": "/sw.js",
+      "dest": "/sw.js",
+      "headers": {
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Service-Worker-Allowed": "/"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html",
+      "headers": {
+        "Cache-Control": "public, max-age=0, must-revalidate"
+      }
+    }
+  ],
+  "env": {
+    "ALIYUN_AI_KEY": "@aliyun_ai_key",
+    "DATABASE_URL": "@database_url",
+    "EDGE_REGIONS": "global",
+    "CACHE_TTL": "86400"
+  },
+  "edge": {
+    "regions": ["global"],
+    "maxDuration": 30,
+    "memory": 128
+  },
+  "headers": {
+    "/*": {
+      "X-Powered-By": "Aliyun ESA Pages",
+      "X-Content-Type-Options": "nosniff",
+      "X-Frame-Options": "DENY",
+      "Referrer-Policy": "strict-origin-when-cross-origin"
+    }
+  },
+  "cache": {
+    "default": {
+      "ttl": 3600,
+      "swr": 86400
+    },
+    "static": {
+      "match": "/assets/*",
+      "ttl": 31536000,
+      "swr": 86400
+    },
+    "api": {
+      "match": "/api/*",
+      "ttl": 300,
+      "swr": 3600
+    }
+  }
+}
