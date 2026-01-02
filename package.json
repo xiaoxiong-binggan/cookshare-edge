@@ -46,7 +46,6 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-pwa": "^0.16.4",
-    // 关键修改：将两个依赖版本统一为^8.42.0，解决版本冲突
     "@typescript-eslint/eslint-plugin": "^8.42.0",
     "@typescript-eslint/parser": "^8.42.0",
     "eslint": "^8.45.0",
